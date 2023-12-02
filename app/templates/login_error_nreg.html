@@ -1,0 +1,17 @@
+{% extends "login.html" %}
+
+{% block status %}
+<div class="alert alert-danger" role="alert">
+   You are not registered. Please sing up first!
+  </div>
+  
+  <div>
+  <form action="/creator" method="POST">
+    
+        
+    <a href="/register" class="btn btn-primary">Sign Up Now</a>
+   
+    </div>
+
+</form>
+{% endblock %}

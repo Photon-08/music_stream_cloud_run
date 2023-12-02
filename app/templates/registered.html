@@ -1,0 +1,32 @@
+{% extends "base_page.html" %}
+
+{% block body %}
+
+
+<style>
+    .parent-container {
+position: relative;
+/* Ensure the parent container is positioned */
+}
+
+.topcorner {
+position: absolute;
+top: 0;
+right: 0;
+/* Set the top and right positions to 0 to place it in the top-right corner */
+}
+</style>
+
+<div class="alert alert-success" role="alert">
+    You are registered!
+  </div>
+  
+  <div class="parent-container">
+    <div class="topcorner"><span class="badge badge-pill badge-success">{{username}}</span></div>
+  </div>
+  
+  
+
+  <h2>User Name: <span class="badge badge-secondary">{{username}}</span></h2>
+
+{% endblock %}

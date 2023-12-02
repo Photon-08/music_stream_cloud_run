@@ -1,0 +1,299 @@
+{% extends "base_page.html" %}
+
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>RhythMix</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/mdb@5.5.0/css/mdb.min.css" rel="stylesheet">
+    <style>
+        /* Add custom CSS styles here */
+        body {
+            background-color: #f8f9fa;
+        }
+        .navbar {
+            background-color: #343a40;
+        }
+        .navbar-brand {
+            color: #fff;
+        }
+        .navbar-nav .nav-link {
+            color: #fff;
+        }
+        .card {
+            margin-bottom: 20px;
+            border: none;
+            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 15px; /* Rounded corners */
+        }
+        .card-body {
+            padding: 20px;
+        }
+        .card-img-top {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Custom CSS for the Log Out button */
+        .modal-content .btn-primary {
+            background-color: #d72a2a33;
+            color: #0a0909; /* Text color for contrast */
+            border-color: rgba(0, 0, 0, 0.1); /* Border color, if needed */
+        }
+
+        /* Hover and focus styles (optional) */
+        .modal-content .btn-primary:hover,
+        .modal-content .btn-primary:focus {
+            background-color: rgba(0, 0, 0, 0.2); /* Adjust the opacity as needed */
+            color: #090909;
+            border-color: #d72a2a33;
+        }
+
+        .navbar-nav {
+            display: flex;
+            flex-direction: row;
+            align-items: right;
+
+            /* Add spacing between the buttons */
+            justify-content: flex-end;
+
+            /* Move the buttons to the right side of the screen */
+            margin-left: auto;
+
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/home">RhythMix</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="False" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+                </li>
+
+
+
+                <li class="nav-item active">
+                    <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+                            Log Out
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">Log Out</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <!-- Add your modal content here -->
+                                        Are you sure you want to log out?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <!-- Include the logout action here -->
+                                        <a href="/logout" class="btn btn-primary">Log Out</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </li>
+
+
+
+                <li class="nav-item active-1">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#creatorModal">
+                        Creator Mode
+                    </button>
+                
+                    <!-- Modal -->
+                    <div class="modal fade" id="creatorModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="creatorModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="creatorModalLabel">Confirm</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- Add your modal content here -->
+                                    Do you want to turn on Creator's Mode?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <!-- Include the logout action here -->
+                                    <a href="/creator_signup" class="btn btn-primary">Yes</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+
+
+
+
+                <li class="nav-item">
+                    <a class="nav-link disabled">
+                        <span class="badge badge-success">{{ user_name }} : {{ role }}</span>
+                    </a>
+                </li>
+
+               
+            
+            </ul>
+            <form class="form-inline my-2 my-lg-0" action="/home" method="POST">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
+                <button type="submit" class="btn btn-outline-success my-2 my-sm-0"  id="submit" type="submit">Search</button>
+              </form>
+        </div>
+    </div>
+</nav>
+
+
+<!--This is for the Songs Collapsable Bar-->
+<div class="accordion" id="accordionExample">
+    <div class="card">
+      <div class="card-header" id="headingOne">
+        <h2 class="mb-0">
+          <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <h4>All Songs</h4>
+          </button>
+        </h2>
+      </div>
+    <!--This is for the body of the first collapsable menu-->
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="card-body">
+            <!--To show all the musics from DB-->
+            <div class="container mt-4">
+                <div class="row">
+                    {% for music in musics %}
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="bg-image hover-overlay ripple">
+                                <img src="{{ url_for('static', filename='peace-tile.jpeg') }}" class="card-img-top" alt="Peace Tile">
+                                <a href="#!">
+                                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                </a>
+                            </div>
+                            <!--Modified codeblock to collect song play data-->
+                            <input type="hidden" name="play-count{{ loop.index }}" value="0">
+
+                                <div class="card-body text-center">
+                                    <h5 class="h5 font-weight-bold"><a href="#" target="_blank">{{ music.Artist }}</a></h5>
+                                    <p class="mb-0">{{ music.Name }}</p>
+                                    <audio id="music{{ loop.index }}" controls >
+                                        <source src="{{ url_for('static', filename=music.path) }}">
+                                    </audio>
+                                
+                                    <script>
+                                        // Add an event listener to each audio element to increment the play count when the song is played.
+                                        document.querySelectorAll('audio').forEach(function(audio) {
+                                            audio.addEventListener('play', function() {
+                                                var playCountInput = document.querySelector('#play-count' + audio.id);
+                                                playCountInput.value++;
+                                
+                                                // Store the play count in the database or other persistent storage.
+                                                // ...
+                                            });
+                                        });
+                                    </script>
+                            </div>
+
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                  Rate This Song
+                                </button>
+                                <div class="dropdown-menu">
+                                  <a class="dropdown-item" href="#">5</a>
+                                  <a class="dropdown-item" href="#">4</a>
+                                  <a class="dropdown-item" href="#">3</a>
+                                  <a class="dropdown-item" href="#">3</a>
+                                  <a class="dropdown-item" href="#">2</a>
+                                  <a class="dropdown-item" href="#">1</a>
+                                </div>
+                              </div>
+                        </div>
+                    </div>
+
+                    
+                    {% endfor %}
+                </div>
+        </div>
+    </div>
+</div>
+
+
+<!--This is for the Album Collapsible Bar-->
+
+<div class="accordion" id="accordionExample">
+    <div class="card">
+        <div class="card-header" id="headingTwo">
+            <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    <h4>Albums</h4>
+                </button>
+            </h2>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+            <div class="row">
+                {% for album in albums %}
+                <div class="col-md-3"> 
+                    <div class="card" style="width: 100%; text-align: center;">
+                        <img src="{{ url_for('static', filename='peace-tile.jpeg') }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ album }}</h5>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            {% for songs in albums[album] %}
+                            <li class="list-group-item">{{ songs }}</li>
+                            <audio id="music{{ loop.index }}" controls class="mx-auto">
+                                <source src="{{ url_for('static', filename=albums[album][songs]) }}">
+                            </audio>
+                            {% endfor %}
+                            
+                        </ul>
+
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                              Rate This Album
+                            </button>
+                            <div class="dropdown-menu">
+                              <a class="dropdown-item" href="#">5</a>
+                              <a class="dropdown-item" href="#">4</a>
+                              <a class="dropdown-item" href="#">3</a>
+                              <a class="dropdown-item" href="#">3</a>
+                              <a class="dropdown-item" href="#">2</a>
+                              <a class="dropdown-item" href="#">1</a>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+{% endblock %}
+<!-- Include Bootstrap JS and MDB JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mdb@5.5.0/js/mdb.min.js"></script>
+<!-- Your custom JavaScript for audio playback can go here -->

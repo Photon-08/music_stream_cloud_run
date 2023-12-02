@@ -1,0 +1,66 @@
+{% extends "base_page.html" %}
+
+{% block body %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Music Streaming Application</title>
+    
+    <style>
+        
+        body {
+            background-image: url('https://i.gadgets360cdn.com/large/music_streaming_image_unsplash_lee_campbell_1645794825031.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .centered-span {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .btn {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary {
+            background-color: #5f27cd; /* Purple color */
+            color: #fff;
+        }
+        .btn-success {
+            background-color: #2ecc71; /* Green color */
+            color: #fff;
+        }
+        .btn:hover {
+            opacity: 0.9;
+            background-color: #333; /* Darker background on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="centered-span">
+        <h2>Welcome to RhythMix!</h2>
+        <form action="/" method="POST">
+            <button type="submit" name="register" value="ok" class="btn btn-primary">Register</button>
+            <button type="submit" name="login" value="log" class="btn btn-success">Log In</button>
+            <button type="submit" name="admin" value="log" class="btn btn-secondary">Admin Log In</button>
+        </form>
+    </div>
+</body>
+
+{% endblock %}

@@ -1,0 +1,100 @@
+{% extends "base_page.html" %}
+
+{% block body %}
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Log In</title>
+  <link rel="stylesheet" href="styles.css"> <!-- Include your CSS file here -->
+  <style>
+      body {
+          background: #f0f0f0; /* Background color for the entire page */
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          background-image: url("https://c4.wallpaperflare.com/wallpaper/751/104/893/old-music-sheet-wallpaper-preview.jpg")
+      }
+
+      .form-container {
+          background: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+          padding: 20px;
+          border-radius: 8px;
+          box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+      }
+
+      .form-title {
+          text-align: center;
+          color: #6a11cb; /* Custom purple color */
+          font-size: 24px;
+          margin-bottom: 20px;
+      }
+
+      .form-group {
+          margin-bottom: 20px;
+      }
+
+      label {
+          color: #333; /* Dark gray text color */
+          font-weight: bold;
+      }
+
+      .form-control {
+          width: 100%;
+          padding: 10px;
+          border: 1px solid #ccc; /* Light gray border */
+          border-radius: 4px;
+      }
+
+      .form-check-label {
+          color: #333;
+      }
+
+      .btn-primary {
+          background: #6a11cb;
+          color: #fff;
+          border: none;
+          border-radius: 4px;
+          padding: 10px 20px;
+          font-weight: bold;
+      }
+
+      .btn-primary:hover {
+          background: #37006a; /* Darker purple on hover */
+      }
+  </style>
+</head>
+
+<body>
+
+    {% block status %}{% endblock %}
+    
+    <div class="form-container">
+		<h2 class="form-title">Admin Log In</h2>
+		<form action="/admin" method="POST">
+			<div class="form-group">
+				<label for="exampleInputUser">User Name</label>
+				<input type="text" name="username" class="form-control" id="exampleInputUserId">
+			</div>
+  
+			
+  
+			<div class="form-group">
+				<label for="exampleInputPassword1">Password</label>
+				<input type="password" name="password" class="form-control" id="exampleInputPassword1">
+			</div>
+  
+			<div class="form-group form-check">
+				<input type="checkbox" class="form-check-input" id="exampleCheck1">
+				<label class="form-check-label" for="exampleCheck1">Check me out</label>
+			</div>
+  
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+	</div>
+  
+</body>
+
+
+{% endblock %}

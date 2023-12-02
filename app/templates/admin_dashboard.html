@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+        <style>
+            .centered-span {
+                text-align: center;
+                display: block;
+                
+            }
+
+            
+        </style>
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+        
+        <!--script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxSzmhHKaiaVEMNcy2Q9TzaI6AUU9zK9Gd2f27T9EJ34W" crossorigin="anonymous"></script-->
+
+        
+
+    </head>
+
+
+
+    <title>RhythMix</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/mdb@5.5.0/css/mdb.min.css" rel="stylesheet">
+    <style>
+        /* Add custom CSS styles here */
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .navbar {
+            background-color: #343a40;
+            flex-direction: row;
+        }
+
+        .navbar-brand {
+            color: #fff;
+        }
+
+        .navbar-nav .nav-link {
+            color: #fff;
+        }
+
+        .card {
+            margin-bottom: 20px;
+            border: none;
+            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 15px; /* Rounded corners */
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-img-top {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Custom CSS for the Log Out button */
+        .modal-content .btn-primary {
+            background-color: #d72a2a33;
+            color: #0a0909; /* Text color for contrast */
+            border-color: rgba(0, 0, 0, 0.1); /* Border color, if needed */
+        }
+
+        /* Hover and focus styles (optional) */
+        .modal-content .btn-primary:hover,
+        .modal-content .btn-primary:focus {
+            background-color: rgba(0, 0, 0, 0.2); /* Adjust the opacity as needed */
+            color: #090909;
+            border-color: #d72a2a33;
+        }
+
+        .navbar-nav {
+            display: flex;
+            flex-direction: row;
+            align-items: right;
+
+            /* Add spacing between the buttons */
+            justify-content: space-between;
+
+            /* Move the buttons to the right side of the screen */
+            margin-left: auto;
+        }
+    </style>
+
+<body>
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/home">RhythMix</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="False" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+                </li>
+
+
+
+                <li class="nav-item active">
+                    <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+                            Log Out
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">Log Out</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <!-- Add your modal content here -->
+                                        Are you sure you want to log out?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <!-- Include the logout action here -->
+                                        <a href="/logout" class="btn btn-primary">Log Out</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </li>
+
+
+
+                <li class="nav-item active-1">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#creatorModal">
+                        Creator Mode
+                    </button>
+                
+                    <!-- Modal -->
+                    <div class="modal fade" id="creatorModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="creatorModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="creatorModalLabel">Confirm</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- Add your modal content here -->
+                                    Do you want to turn on Creator's Mode?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <!-- Include the logout action here -->
+                                    <a href="/creator_signup" class="btn btn-primary">Yes</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+
+
+
+
+                <li class="nav-item">
+                    <a class="nav-link disabled">
+                        <span class="badge badge-success">{{ user_name }} : {{ role }}</span>
+                    </a>
+                </li>
+
+               
+            
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+<figure class="figure">
+    <img id="image" src="{{ url_for('static', filename='charts/artist_plot.png') }}"class="figure-img img-fluid rounded" alt="Bar Plot of All Songs">
+    <figcaption class="figure-caption">Bar Plot of Artists.</figcaption>
+</figure>
+
+<figure class="figure">
+    <img id="image" src="{{ url_for('static', filename='charts/genre_plot.png') }}"class="figure-img img-fluid rounded" alt="Bar Plot of All Songs">
+    <figcaption class="figure-caption">Bar Plot of Genre.</figcaption>
+</figure>
+
+<figure class="figure">
+    <img id="image" src="{{ url_for('static', filename='charts/song_count_plot.png') }}"class="figure-img img-fluid rounded" alt="Bar Plot of All Songs">
+    <figcaption class="figure-caption">Bar Plot of Songs</figcaption>
+</figure>
+
+<div style="background-color: #f4f4f4; border: 1px solid #ccc; border-radius: 8px; padding: 20px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+    <h1 style="font-size: 28px; color: #333; text-align: center; margin-bottom: 20px; font-weight: bold; text-transform: uppercase;">Total Number of Users</h1>
+    <div style="background-color: #fff; border-radius: 8px; padding: 15px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); text-align: center;">
+        <h2 style="font-size: 36px; color: #007bff; margin: 0; font-weight: bold;">{{user_count}}</h2>
+    </div>
+</div>
+
+<div style="background-color: #f4f4f4; border: 2px solid #ccc; border-radius: 8px; padding: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+    <h1 style="font-size: 24px; color: #333; margin-bottom: 15px; text-align: center;">Songs Data</h1>
+    <div style="background-color: #fff; border: 1px solid #ddd; border-radius: 6px; padding: 15px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+        <h2 style="font-size: 18px; color: #333; margin: 0 0 15px;">Song Stat</h2>
+        <p style="font-size: 28px; color: #4CAF50; margin: 0;">{{user_count}}</p>
+
+        <h2 style="font-size: 18px; color: #333; margin: 0 0 15px;">Artist Stat</h2S>
+        <p style="font-size: 28px; color: #4CAF50; margin: 0;">{{singer}}</p>
+
+    </div>
+</div>
+
+
+
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Creator's Name</th>
+          
+          <th scope="col">Flag</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+
+
+        {% for creator in creators %}
+    <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ creator }}</td>
+        <td>
+            {% if creators[creator] in ["Green"] %}
+                {{ '<span class="badge badge-success">No Flag</span>' | safe }}
+            {% endif %}
+            {% if creators[creator] in ["Warning"] %}
+                {{ '<span class="badge badge-warning">Warning</span>' | safe }}
+            {% endif %}
+            {% if creators[creator] in ["Block"] %}
+                {{ '<span class="badge badge-danger">Blocked</span>' | safe }}
+            {% endif %}
+        </td>
+    </tr>
+{% endfor %}
+
+      </tbody>
+  </table>
+
+
+
+  
+  <div class="container">
+    <!-- Form for blacklisting creator -->
+    <div class="rounded-box">
+        <form class="row g-3" action="/admin_dashboard" method="POST">
+            <label for="creator_block" class="form-label">Select The Creator to Blacklist:</label>
+            <select class="form-select-dropdown" id="creator" name="creator" required>
+                {% for c in creators %}
+                <option value="{{ c }}">{{ c }}</option>
+                {% endfor %}
+            </select>
+
+            <select class="form-select-dropdown" id="choice" name="choice" required>
+                <option value="Warning">Warning</option>
+                <option value="Block">Block</option>
+            </select>
+
+            <button type="submit" class="btn-submit rounded">Blacklist</button>
+        </form>
+    </div>
+
+    <!-- Form for blacklisting song -->
+    <div class="rounded-box">
+        <form class="row g-3" action="/admin_dashboard" method="POST">
+            <label for="songname_block" class="form-label">Select The Song to Blacklist:</label>
+            <select class="form-select-dropdown" id="songname_block" name="songname_block" required>
+                {% for song in song_names %}
+                <option value="{{ song }}">{{ song }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit" class="btn-submit rounded">Blacklist</button>
+        </form>
+    </div>
+</div>
+
+<!--for edit song-->
+<style>
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa; /* Light gray background */
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Style for rounded boxes */
+.rounded-box {
+    background-color: #fff; /* White background */
+    border-radius: 15px; /* Rounded corners */
+    padding: 20px; /* Padding inside the box */
+    margin-bottom: 20px; /* Margin between boxes */
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+.form-select-dropdown {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+.btn-submit {
+    background-color: #007bff; /* Blue button color */
+    color: #fff;
+    border: none;
+    padding: 10px 20px; /* Adjust padding for better aesthetics */
+    cursor: pointer;
+    border-radius: 10px; /* Rounded corners */
+}
+
+/* Additional styling for rounded class */
+.rounded {
+    border-radius: 10px;
+}
+
+</style>
+
+
+
+
+
+
+
